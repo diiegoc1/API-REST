@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --env-file=.env --watch src/servidor.js",
     "start": "node src/servidor.js",
-    "hash": "node src/hash.js"
+    "hash": "node src/hash.js",
+    "test": "node --env-file=.env node_modules/vitest/vitest.mjs run"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,9 @@
     "jsonwebtoken": "^9.0.3",
     "morgan": "^1.12.1",
     "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "supertest": "^7.3.2",
+    "vitest": "^5.1.2"
   }
 }
