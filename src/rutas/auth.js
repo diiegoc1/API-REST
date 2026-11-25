@@ -1,10 +1,11 @@
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { limitarLogin } from "../limitadores.js";
 
 export const auth = Router();
 
-auth.post("/auth/login", async (req, res) => {
+auth.post("/auth/login", limitarLogin, async (req, res) => {
   const { email, clave } = req.body ?? {};
   const ok =
     email === process.env.ADMIN_EMAIL &&

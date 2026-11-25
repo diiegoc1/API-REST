@@ -12,6 +12,8 @@ import {documento} from "./docs.js";
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(documento));
 app.use(helmet());
 app.use(cors({ origin: process.env.ORIGEN ?? "*" }));

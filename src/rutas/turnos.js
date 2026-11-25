@@ -2,6 +2,7 @@ import { Router } from "express";
 import { randomUUID } from "node:crypto";
 import { leerTurnos, guardarTurnos } from "../db.js";
 import { validarTurno, SERVICIOS, HORAS, esFecha } from "../validar.js";
+import { limitarTurnos } from "../limitadores.js";
 
 export const turnos = Router();
 
@@ -19,7 +20,7 @@ turnos.get("/turnos/libres", async (req, res) => {
   res.json({ fecha, libres: HORAS.filter((h) => !ocupadas.includes(h)) });
 });
 
-turnos.post("/turnos", async (req, res) => {
+turnos.post("/turnos", limitarTurnos, async (req, res) => {
   const { errores, turno } = validarTurno(req.body ?? {});
   if (errores.length)
     return res
