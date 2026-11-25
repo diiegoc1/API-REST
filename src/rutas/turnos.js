@@ -37,7 +37,7 @@ turnos.post("/turnos", async (req, res) => {
     return res.status(409).json({ error: "Ese horario ya esta tomado" });
 
   const nuevo = {
-    id: randomUUID,
+    id: randomUUID(),
     ...turno,
     estado: "pendiente",
     creado: new Date().toISOString(),
