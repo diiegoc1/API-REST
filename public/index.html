@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turnos · Peluquería Tijeras</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 640px;
+        margin: 24px auto;
+        padding: 0 16px;
+      }
+      form,
+      section {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+      input,
+      select,
+      button {
+        font: inherit;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background: #0f766e;
+        color: #fff;
+        border: 0;
+        cursor: pointer;
+      }
+      #msg {
+        font-weight: 600;
+      }
+      li {
+        margin: 6px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>✂️ Peluquería Tijeras</h1>
+    <form id="reserva">
+      <h2>Pedí tu turno</h2>
+      <select id="servicio" required></select>
+      <input id="fecha" type="date" required />
+      <select id="hora" required>
+        <option value="">Elegí primero el día</option>
+      </select>
+      <input id="nombre" placeholder="Tu nombre" required />
+      <input id="telefono" placeholder="Tu teléfono" required />
+      <button>Reservar</button>
+      <p id="msg" role="status"></p>
+    </form>
+    <section>
+      <h2>Panel del dueño</h2>
+      <form id="login">
+        <input id="email" type="email" placeholder="Email" required />
+        <input id="clave" type="password" placeholder="Clave" required />
+        <button>Entrar</button>
+      </form>
+      <ul id="lista"></ul>
+    </section>
+    <script src="app.js"></script>
+  </body>
+</html>
