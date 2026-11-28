@@ -1,0 +1,28 @@
+services:
+  api:
+    build: .
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - datos:/app/datos
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/v1/servicios"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+  web:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_datos:/data
+    depends_on:
+      - api
+
+volumes:
+  datos:
+  caddy_datos:
