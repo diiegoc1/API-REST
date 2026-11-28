@@ -1,6 +1,6 @@
 services:
   api:
-    build: .
+    image: ghcr.io/diiegoc1/api-rest:latest
     env_file: .env
     environment:
       DATABASE_URL: postgres://turnos:${POSTGRES_PASSWORD}@db:5432/turnos
