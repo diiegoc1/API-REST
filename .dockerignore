@@ -1,0 +1,5 @@
+node_modules
+.env
+.git
+datos/turnos.json
+coverage
